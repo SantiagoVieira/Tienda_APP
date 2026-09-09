@@ -22,10 +22,26 @@ class Carrito:
         self._manejador_reglas = manejador_reglas or ManejadorReglas()
 
     def agregar_item(self, producto: Producto, cantidad: int) -> Item:
-        """Crea y agrega una línea nueva al carrito, y la retorna."""
+        """Agrega `cantidad` del producto al carrito.
+
+        Si el producto ya tiene una línea en el carrito, se suma la cantidad
+        a esa línea existente en lugar de crear una nueva. Así la regla de
+        precio (p. ej. el descuento por bloques) se calcula sobre la
+        cantidad total del producto y no queda fragmentada en varias líneas.
+        """
+        item_existente = self._buscar_item_por_producto(producto)
+        if item_existente is not None:
+            item_existente.agregar_cantidad(cantidad)
+            return item_existente
+
         item = Item(producto, cantidad, self._manejador_reglas)
         self.items.append(item)
         return item
+
+    def _buscar_item_por_producto(self, producto: Producto) -> Item | None:
+        return next(
+            (i for i in self.items if i.producto.sku == producto.sku), None
+        )
 
     def calcular_total(self) -> float:
         """Suma del total de todas las líneas del carrito."""

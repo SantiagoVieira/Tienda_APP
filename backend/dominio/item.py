@@ -43,5 +43,14 @@ class Item:
             self.cantidad, self.producto.precio_unitario
         )
 
+    def agregar_cantidad(self, cantidad: int) -> None:
+        """Suma `cantidad` a la línea existente.
+
+        Se usa cuando el mismo producto se agrega dos veces al carrito, para
+        que la regla de precio (p. ej. el descuento por bloques) se calcule
+        sobre la cantidad total y no quede fragmentada en varias líneas.
+        """
+        self.cantidad += cantidad
+
     def __repr__(self) -> str:  # pragma: no cover - only for debugging
         return f"Item(sku={self.producto.sku!r}, cantidad={self.cantidad})"
