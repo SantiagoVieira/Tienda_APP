@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda | Caso de estudio de diseño de software</title>
+  <link rel="stylesheet" href="/static/estilos.css" />
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera__contenido">
+      <div>
+        <h1>Tienda</h1>
+        <p class="cabecera__sub">Caso de estudio · principios de diseño de software</p>
+      </div>
+      <div class="cabecera__ventas">
+        <span class="etiqueta">Total de ventas de la tienda</span>
+        <strong id="total-ventas">$0</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenido">
+    <section class="catalogo">
+      <h2>Catálogo</h2>
+      <div id="productos" class="rejilla"></div>
+    </section>
+
+    <aside class="carrito">
+      <h2>Carrito de compras</h2>
+      <div id="items-carrito" class="carrito__items"></div>
+      <div class="carrito__total">
+        <span>Total de la compra</span>
+        <strong id="total-carrito">$0</strong>
+      </div>
+      <button id="btn-comprar" class="boton boton--principal" disabled>
+        Finalizar compra
+      </button>
+    </aside>
+  </main>
+
+  <div id="aviso" class="aviso" role="status" hidden></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
