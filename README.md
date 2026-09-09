@@ -30,7 +30,7 @@ paso de compilación. La documentación interactiva de la API queda en
 
 ## Estructura del proyecto
 
-```
+```text
 tienda-app/
 ├── backend/
 │   ├── dominio/                 ← el diseño del OVA, sin dependencias web
@@ -62,7 +62,7 @@ es solo una de sus posibles interfaces.
 ## Mapeo del diagrama al código
 
 | Elemento del diagrama | Dónde quedó |
-|---|---|
+| --- | --- |
 | `Tienda` (`total_ventas`, `agregar_producto_a_carrito`, `eliminar_item_de_carrito`, `finalizar_compra`) | `dominio/tienda.py` |
 | `Usuario` (`agregar_item_a_carrito`, `borrar_item_de_carrito`) | `dominio/usuario.py` |
 | `Carrito` (`agregar_item`, `calcular_total`, `borrar_item`) | `dominio/carrito.py` |
@@ -81,7 +81,7 @@ una aplicación web, señalados más abajo.
 ## Reglas de precio
 
 | Prefijo del SKU | Tipo | Cálculo |
-|---|---|---|
+| --- | --- | --- |
 | `EA` | Normal | `precio_unitario × cantidad` |
 | `WE` | De peso | `cantidad_kg × 1000 × precio_por_gramo` |
 | `SP` | Descuento especial | 20% de descuento por cada 3 unidades completas, con tope de 50% |
@@ -89,12 +89,10 @@ una aplicación web, señalados más abajo.
 Descuento especial en detalle: 1–2 u. → 0%; 3–5 u. → 20%; 6–8 u. → 40%;
 9 u. o más → 50% (tope).
 
-
-
 ## API REST
 
 | Método | Ruta | Qué hace | Método de dominio que invoca |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `GET` | `/api/productos` | Catálogo con tipo de producto y unidad | — |
 | `GET` | `/api/tienda` | Total acumulado de ventas | `Tienda.total_ventas` |
 | `GET` | `/api/carrito` | Ítems con su total y el total de la compra | `Carrito.calcular_total` |
@@ -107,4 +105,3 @@ El usuario se identifica con el encabezado `X-Usuario` (por defecto
 diagrama. No hay autenticación porque el caso de estudio no la plantea.
 
 ---
-

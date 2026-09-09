@@ -7,12 +7,12 @@ el catálogo a este estado.
 
 from __future__ import annotations
 
-from typing import List
+from typing import list
 
 from dominio import Producto
 
 
-def catalogo_inicial() -> List[Producto]:
+def catalogo_inicial() -> list[Producto]:
     return [
         # --- Productos normales (EA): precio por unidad -------------------
         Producto(

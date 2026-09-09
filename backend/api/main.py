@@ -9,13 +9,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from datos import catalogo_inicial
+from dominio import ErrorDominio, Item, ProductoNoEncontrado, Tienda, Usuario
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-
-from datos import catalogo_inicial
-from dominio import ErrorDominio, Item, ProductoNoEncontrado, Tienda, Usuario
 
 from .esquemas import (
     AgregarItemIn,
